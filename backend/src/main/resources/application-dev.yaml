@@ -1,0 +1,54 @@
+server:
+  port: 8080
+springdoc:
+  paths-to-match: /**
+  paths-to-exclude: /error/**
+  swagger-ui:
+    operations-sorter: alpha
+    path: /swagger-ui.html
+spring:
+  mail:
+    host: ${MAIL_HOST:smtp.163.com}
+    username: ${MAIL_USERNAME:15340791287@163.com}
+    password: ${MAIL_PASSWORD:PMFQPODUGZIJJZBT}
+  rabbitmq:
+    addresses: ${RABBITMQ_HOST:localhost}
+    username: ${RABBITMQ_USERNAME:root}
+    password: ${RABBITMQ_PASSWORD:root}
+    virtual-host: /
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/db
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:root}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  security:
+    jwt:
+      key: ${SECURITY_JWT_KEY:kkkeeeyyy}
+      expire: 72
+      limit:
+        base: 10
+        upgrade: 300
+        frequency: 30
+    filter:
+      order: -100
+  web:
+    verify:
+      mail-limit: 60
+    flow:
+      period: 5
+      limit: 100
+      block: 30
+    cors:
+      origin: '*'
+      credentials: false
+      methods: '*'
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      table-prefix: tb_
