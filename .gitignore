@@ -235,3 +235,4 @@ dist
 /.gradle/
 /backend/build/
 /backend/.gradle/
+/python/venv/
