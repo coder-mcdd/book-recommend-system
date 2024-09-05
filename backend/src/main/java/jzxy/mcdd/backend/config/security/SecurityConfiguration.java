@@ -11,6 +11,7 @@ import jzxy.mcdd.backend.filter.RequestLogFilter;
 import jzxy.mcdd.backend.auth.AccountService;
 import jzxy.mcdd.backend.utils.Const;
 import jzxy.mcdd.backend.utils.JwtUtils;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.AccessDeniedException;
@@ -33,15 +34,12 @@ import java.io.PrintWriter;
  * @date: 2024/8/11 23:27
  */
 @Configuration
+@RequiredArgsConstructor
 public class SecurityConfiguration {
-    @Resource
-    JwtAuthenticationFilter jwtAuthenticationFilter;
-    @Resource
-    RequestLogFilter requestLogFilter;
-    @Resource
-    JwtUtils utils;
-    @Resource
-    AccountService service;
+    private final AccountService service;
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final RequestLogFilter requestLogFilter;
+    private final JwtUtils utils;
 
     /**
      * 配置 SpringSecurity 的过滤器链，定义安全规则和认证处理

@@ -5,7 +5,6 @@ import jzxy.mcdd.backend.entity.Account;
 import jzxy.mcdd.backend.entity.request.ConfirmResetVO;
 import jzxy.mcdd.backend.entity.request.EmailRegisterVO;
 import jzxy.mcdd.backend.entity.request.EmailResetVO;
-import jzxy.mcdd.backend.entity.request.ModifyEmailVO;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
@@ -52,23 +51,4 @@ public interface AccountService extends IService<Account>, UserDetailsService {
      * @return 返回确认操作的结果，成功或失败的原因
      */
     String resetConfirm(ConfirmResetVO info);
-
-    /**
-     * 更改账户密码
-     *
-     * @param id      用户 ID
-     * @param oldPass 原密码
-     * @param newPass 新密码
-     * @return 返回密码更改结果，成功或失败的原因
-     */
-    boolean changePassword(int id, String oldPass, String newPass);
-
-    /**
-     * 修改账户的邮箱
-     *
-     * @param id 用户 ID
-     * @param vo 包含新邮箱和验证信息的数据对象
-     * @return 返回邮箱修改结果，成功或失败的原因
-     */
-    String modifyEmail(int id, ModifyEmailVO vo);
 }

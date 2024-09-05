@@ -6,7 +6,9 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
+import jzxy.mcdd.backend.utils.Const;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
@@ -21,8 +23,6 @@ import java.util.Date;
  * @date: 2024/8/11 23:27
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Account implements BaseData {
     @TableId(type = IdType.AUTO)
     private Integer id;
@@ -36,9 +36,9 @@ public class Account implements BaseData {
     @Email(message = "请输入有效的邮箱地址")
     private  String email;
     @Parameter(description = "用户角色")
-    private String role;
+    private String role = Const.ROLE_NORMAL;
     @Parameter(description = "用户头像 URL")
-    private String avatar;
+    private String avatar = Const.DEFAULT_AVATAR;
     @Parameter(description = "注册时间")
-    private  Date registerTime;
+    private  Date registerTime = new Date();
 }

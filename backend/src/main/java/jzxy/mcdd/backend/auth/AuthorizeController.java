@@ -2,7 +2,6 @@ package jzxy.mcdd.backend.auth;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
@@ -11,6 +10,7 @@ import jzxy.mcdd.backend.entity.RestBean;
 import jzxy.mcdd.backend.entity.request.ConfirmResetVO;
 import jzxy.mcdd.backend.entity.request.EmailRegisterVO;
 import jzxy.mcdd.backend.entity.request.EmailResetVO;
+import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,12 +25,12 @@ import java.util.function.Supplier;
  */
 @Validated
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/auth")
 @Tag(name = "登录校验相关", description = "包括用户登录、注册、验证码请求等操作。")
 public class AuthorizeController {
 
-    @Resource
-    AccountService accountService;
+    private final AccountService accountService;
 
     /**
      * 请求邮件验证码

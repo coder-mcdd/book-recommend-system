@@ -1,4 +1,4 @@
-package jzxy.mcdd.backend.auth;
+package jzxy.mcdd.backend.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import jzxy.mcdd.backend.entity.Account;

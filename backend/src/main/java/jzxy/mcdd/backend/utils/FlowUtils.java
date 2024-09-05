@@ -1,6 +1,7 @@
 package jzxy.mcdd.backend.utils;
 
 import jakarta.annotation.Resource;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
@@ -17,9 +18,9 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 @Component
+@RequiredArgsConstructor
 public class FlowUtils {
-    @Resource
-    StringRedisTemplate template;
+    private final StringRedisTemplate template;
 
     /**
      * 针对于单次频率限制，请求成功后，在冷却时间内不得再次进行请求，如 3 秒内不能再次发起请求

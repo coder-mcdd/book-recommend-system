@@ -7,6 +7,7 @@ import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import jakarta.annotation.Resource;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.security.core.GrantedAuthority;
@@ -28,7 +29,11 @@ import java.util.concurrent.TimeUnit;
  * @date: 2024/8/11 23:13
  */
 @Component
+@RequiredArgsConstructor
 public class JwtUtils {
+    private final StringRedisTemplate template;
+    private final FlowUtils utils;
+
     @Value("${spring.security.jwt.key}")
     private String key;
     @Value("${spring.security.jwt.expire}")
@@ -39,10 +44,7 @@ public class JwtUtils {
     private int limit_upgrade;
     @Value("${spring.security.jwt.limit.frequency}")
     private int limit_frequency;
-    @Resource
-    StringRedisTemplate template;
-    @Resource
-    FlowUtils utils;
+
 
     /**
      * 让指定 Jwt 令牌失效

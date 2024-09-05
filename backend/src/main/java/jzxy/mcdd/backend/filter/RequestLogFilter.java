@@ -6,6 +6,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import jzxy.mcdd.backend.utils.Const;
 import jzxy.mcdd.backend.utils.SnowflakeIdGenerator;
@@ -28,9 +29,9 @@ import java.util.Set;
  */
 @Slf4j
 @Component
+@RequiredArgsConstructor
 public class RequestLogFilter extends OncePerRequestFilter {
-    @Resource
-    SnowflakeIdGenerator generator;
+    private final SnowflakeIdGenerator generator;
 
     private final Set<String> ignores = Set.of("/swagger-ui/index.html", "/v3/api-docs");
 
