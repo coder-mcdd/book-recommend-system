@@ -7,10 +7,6 @@ springdoc:
     operations-sorter: alpha
     path: /swagger-ui.html
 spring:
-  mail:
-    host: ${MAIL_HOST}
-    username: ${MAIL_USERNAME}
-    password: ${MAIL_PASSWORD}
   data:
     redis:
       host: ${REDIS_HOST:localhost}
@@ -25,6 +21,10 @@ spring:
     username: ${RABBITMQ_USER:root}
     password: ${RABBITMQ_PASS:root}
     virtual-host: ${RABBITMQ_VIRTUAL_HOST:/}
+  mail:
+    host: ${MAIL_HOST}
+    username: ${MAIL_USERNAME}
+    password: ${MAIN_PASSWORD}
   security:
     jwt:
       key: ${SECURITY_JWT_KEY:kkkeeeyyy}

@@ -5,6 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.mail.MailSenderAutoConfiguration;
+import org.springframework.context.annotation.Import;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
@@ -21,7 +23,9 @@ import java.util.Map;
 @Component
 @RabbitListener(queues = "mail")
 @RequiredArgsConstructor
+@Import(MailSenderAutoConfiguration.class) // fix IDEA bug
 public class MailQueueListener {
+
     private final JavaMailSender sender;
 
     @Value("${spring.mail.username}")
