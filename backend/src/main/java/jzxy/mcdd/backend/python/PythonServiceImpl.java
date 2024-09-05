@@ -1,6 +1,5 @@
-package jzxy.mcdd.backend.service.impl;
+package jzxy.mcdd.backend.python;
 
-import jzxy.mcdd.backend.service.PythonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;

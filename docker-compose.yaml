@@ -2,44 +2,29 @@ services:
   mysql:
     image: mysql:8.0.39
     container_name: mysql3306
-    restart: "no"
-    ports:
-      - "3306:3306"
-    volumes:
-      - mysql_data:/var/lib/mysql
-      - type: bind
-        source: ./db
-        target: /docker-entrypoint-initdb.d
-        read_only: true
+    hostname: database
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: db
+      MYSQL_DATABASE: ${MYSQL_DB}
+      MYSQL_USER: ${MYSQL_COMMON_USER}
+      MYSQL_PASSWORD: ${MYSQL_COMMON_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - ${MYSQL_EXPOSE_PORT}:3306
+    volumes:
+      - ${MYSQL_INIT}:/docker-entrypoint-initdb.d
+      - ${MYSQL_STORE}:/var/lib/mysql
+    restart: always
   redis:
     image: redis:7.4.0
-    container_name: redis6379
-    restart: "no"
+    container_name: redis
     ports:
-      - "6379:6379"
-    healthcheck:
-      test: redis-cli ping
-      interval: 10s
-      timeout: 5s
-      start_period: 10s
-      retries: 5
+      - ${REDIS_PORT}:6379
   rabbitmq:
     image: rabbitmq:management
-    container_name: rabbitmq5672
+    container_name: rabbitmq
     ports:
-      - "15672:15672"
-      - "5672:5672"
+      - ${MQ_CONTROLLER_EXPOSE_PORT}:15672
+      - ${MQ_EXPOSE_PORT}:5672
     environment:
-      RABBITMQ_DEFAULT_USER: root
-      RABBITMQ_DEFAULT_PASS: root
-    healthcheck:
-      test: rabbitmq-diagnostics -q status
-      interval: 10s
-      timeout: 5s
-      start_period: 10s
-      retries: 5
-volumes:
-  mysql_data:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASS}

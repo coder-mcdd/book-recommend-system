@@ -1,6 +1,5 @@
-package jzxy.mcdd.backend.controller;
+package jzxy.mcdd.backend.python;
 
-import jzxy.mcdd.backend.service.PythonService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;

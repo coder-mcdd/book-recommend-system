@@ -1,9 +1,8 @@
-package jzxy.mcdd.backend.controller;
+package jzxy.mcdd.backend.book;
 
 import lombok.RequiredArgsConstructor;
 import jzxy.mcdd.backend.entity.Book;
 import jzxy.mcdd.backend.entity.RestBean;
-import jzxy.mcdd.backend.service.BookService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

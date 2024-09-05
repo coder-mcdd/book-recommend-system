@@ -1,4 +1,4 @@
-package jzxy.mcdd.backend.config;
+package jzxy.mcdd.backend.config.security;
 
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
@@ -8,7 +8,7 @@ import jzxy.mcdd.backend.entity.RestBean;
 import jzxy.mcdd.backend.entity.response.AuthorizeVO;
 import jzxy.mcdd.backend.filter.JwtAuthenticationFilter;
 import jzxy.mcdd.backend.filter.RequestLogFilter;
-import jzxy.mcdd.backend.service.AccountService;
+import jzxy.mcdd.backend.auth.AccountService;
 import jzxy.mcdd.backend.utils.Const;
 import jzxy.mcdd.backend.utils.JwtUtils;
 import org.springframework.context.annotation.Bean;

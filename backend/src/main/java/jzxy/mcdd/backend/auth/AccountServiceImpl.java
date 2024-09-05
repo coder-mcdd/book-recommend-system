@@ -1,4 +1,4 @@
-package jzxy.mcdd.backend.service.impl;
+package jzxy.mcdd.backend.auth;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -8,8 +8,6 @@ import jzxy.mcdd.backend.entity.request.ConfirmResetVO;
 import jzxy.mcdd.backend.entity.request.EmailRegisterVO;
 import jzxy.mcdd.backend.entity.request.EmailResetVO;
 import jzxy.mcdd.backend.entity.request.ModifyEmailVO;
-import jzxy.mcdd.backend.mapper.AccountMapper;
-import jzxy.mcdd.backend.service.AccountService;
 import jzxy.mcdd.backend.utils.Const;
 import jzxy.mcdd.backend.utils.FlowUtils;
 import org.springframework.amqp.core.AmqpTemplate;
@@ -22,7 +20,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;

@@ -1,4 +1,4 @@
-package jzxy.mcdd.backend.controller;
+package jzxy.mcdd.backend.auth;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -11,7 +11,6 @@ import jzxy.mcdd.backend.entity.RestBean;
 import jzxy.mcdd.backend.entity.request.ConfirmResetVO;
 import jzxy.mcdd.backend.entity.request.EmailRegisterVO;
 import jzxy.mcdd.backend.entity.request.EmailResetVO;
-import jzxy.mcdd.backend.service.AccountService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 

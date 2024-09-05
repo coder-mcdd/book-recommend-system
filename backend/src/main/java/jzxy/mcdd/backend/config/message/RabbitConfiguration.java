@@ -1,4 +1,4 @@
-package jzxy.mcdd.backend.config;
+package jzxy.mcdd.backend.config.message;
 
 import jzxy.mcdd.backend.utils.Const;
 import org.springframework.amqp.core.Queue;

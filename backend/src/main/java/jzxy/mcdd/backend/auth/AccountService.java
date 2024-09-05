@@ -1,4 +1,4 @@
-package jzxy.mcdd.backend.service;
+package jzxy.mcdd.backend.auth;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import jzxy.mcdd.backend.entity.Account;

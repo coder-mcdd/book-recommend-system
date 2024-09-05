@@ -1,4 +1,4 @@
-package jzxy.mcdd.backend.config;
+package jzxy.mcdd.backend.config.swagger;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeIn;
@@ -47,17 +47,17 @@ public class SwaggerConfiguration {
     @Bean
     public OpenAPI springShopOpenAPI() {
         return new OpenAPI()
-                .info(new Info().title("Monitor-CBQ API 文档")
-                        .description("晋中学院 2024 计算机专升本 2301 班 软件工程课程设计")
+                .info(new Info().title("Book Recommend System API 文档")
+                        .description("book-recommend-system for 2024 College Students' Innovation and Entrepreneurship in jzxy. ")
                         .version("V1.0.0")
                         .license(new License()
                                 .name("Github")
-                                .url("https://github.com/caobaoqi1029/monitor-cbq")
+                                .url("https://github.com/coder-mcdd/book-recommend-system")
                         )
                 )
                 .externalDocs(new ExternalDocumentation()
                         .description("About Me")
-                        .url("https://github.com/caobaoqi1029")
+                        .url("https://github.com/coder-mcdd")
                 );
     }
 

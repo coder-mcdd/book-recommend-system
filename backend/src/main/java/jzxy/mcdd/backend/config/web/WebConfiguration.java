@@ -1,4 +1,4 @@
-package jzxy.mcdd.backend.config;
+package jzxy.mcdd.backend.config.web;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

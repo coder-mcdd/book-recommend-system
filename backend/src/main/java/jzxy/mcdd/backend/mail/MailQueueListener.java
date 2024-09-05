@@ -1,4 +1,4 @@
-package jzxy.mcdd.backend.task;
+package jzxy.mcdd.backend.mail;
 
 import jakarta.annotation.Resource;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;

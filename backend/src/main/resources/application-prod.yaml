@@ -5,28 +5,29 @@ springdoc:
   paths-to-exclude: /error/**
   swagger-ui:
     operations-sorter: alpha
+    path: /swagger-ui.html
 spring:
   mail:
-    host: ${MAIL_HOST}
-    username: ${MAIL_USERNAME}
-    password: ${MAIL_PASSWORD}
-  rabbitmq:
-    addresses: ${RABBITMQ_HOST:localhost}
-    username: ${RABBITMQ_USERNAME}
-    password: ${RABBITMQ_PASSWORD}
-    virtual-host: /
+    host: ${MAIL_HOST:smtp.163.com}
+    username: ${MAIL_USERNAME:15340791287@163.com}
+    password: ${MAIL_PASSWORD:PMFQPODUGZIJJZBT}
   data:
     redis:
       host: ${REDIS_HOST:localhost}
       port: ${REDIS_PORT:6379}
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/db
-    username: ${MYSQL_USERNAME}
-    password: ${MYSQL_PASSWORD}
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DB}:db
+    username: ${MYSQL_ROOT_USER:root}
+    password: ${MYSQL_ROOT_PASSWORD:root}
     driver-class-name: com.mysql.cj.jdbc.Driver
+  rabbitmq:
+    addresses: ${RABBITMQ_HOST:localhost}
+    username: ${RABBITMQ_USER:root}
+    password: ${RABBITMQ_PASS:root}
+    virtual-host: ${RABBITMQ_VIRTUAL_HOST}:/
   security:
     jwt:
-      key: ${SECURITY_JWT_KEY}
+      key: ${SECURITY_JWT_KEY:kkkeeeyyy}
       expire: 72
       limit:
         base: 10
@@ -42,12 +43,6 @@ spring:
       limit: 100
       block: 30
     cors:
-      origin: '*'
+      origin: ${ALLOWED_ORIGINS}:'*'
       credentials: false
-      methods: '*'
-mybatis-plus:
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  global-config:
-    db-config:
-      table-prefix: tb_
+      methods: ${ALLOWED_METHODS}:'*'
