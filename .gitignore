@@ -236,3 +236,4 @@ dist
 /backend/build/
 /backend/.gradle/
 /python/venv/
+/docker/store/

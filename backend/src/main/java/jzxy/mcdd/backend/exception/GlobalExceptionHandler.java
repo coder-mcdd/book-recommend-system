@@ -24,9 +24,26 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
+
     @ExceptionHandler(value = {BusinessException.class})
     public ResponseEntity<Object> handleBusinessException(BusinessException ex, WebRequest request) {
         log.error("Business Error Handled  ===> ", ex);
+        ErrorResponseException errorResponseException =
+                new ErrorResponseException(
+                        HttpStatus.INTERNAL_SERVER_ERROR,
+                        ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage()),
+                        ex.getCause());
+        return handleExceptionInternal(
+                errorResponseException,
+                errorResponseException.getBody(),
+                errorResponseException.getHeaders(),
+                errorResponseException.getStatusCode(),
+                request);
+    }
+
+    @ExceptionHandler(value = {PythonServerException.class})
+    public ResponseEntity<Object> handleBusinessException(PythonServerException ex, WebRequest request) {
+        log.error("PythonServer Error Handled  ===> ", ex);
         ErrorResponseException errorResponseException =
                 new ErrorResponseException(
                         HttpStatus.INTERNAL_SERVER_ERROR,
@@ -50,8 +67,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         throw ex;
     }
 
-
-
     @ExceptionHandler(value = {Throwable.class})
     public ResponseEntity<Object> handleException(Throwable ex, WebRequest request) {
         log.error("System Error Handled  ===> ", ex);
@@ -68,12 +83,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                 request);
     }
 
-    /**
-     * 与SpringBoot 保持一致，校验不通过打印警告信息，而不是直接抛出异常
-     *
-     * @param exception 验证异常
-     * @return 校验结果
-     */
     @ExceptionHandler(ValidationException.class)
     public RestBean<Void> validateError(ValidationException exception) {
         log.warn("Resolved [{}: {}]", exception.getClass().getName(), exception.getMessage());

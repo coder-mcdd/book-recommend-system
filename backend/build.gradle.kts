@@ -24,6 +24,7 @@ repositories {
 }
 
 dependencies {
+    implementation("cn.hutool:hutool-all:5.8.16")
     implementation("com.auth0:java-jwt:4.3.0")
     implementation("com.alibaba.fastjson2:fastjson2:2.0.25")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0")

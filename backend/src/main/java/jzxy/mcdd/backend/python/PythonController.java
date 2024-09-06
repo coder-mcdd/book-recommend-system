@@ -21,11 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class PythonController {
     private final PythonService service;
 
-    @GetMapping("/hello")
-    public String hello() {
-        return service.getHelloMessage();
-    }
-
     @GetMapping("/greet")
     public String greet(@RequestParam String name) {
         return service.getGreetingMessage(name);

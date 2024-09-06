@@ -18,11 +18,6 @@ import java.net.URI;
 @RequiredArgsConstructor
 public class PythonServiceImpl implements PythonService {
     private final RestTemplate restTemplate;
-    @Override
-    public String getHelloMessage() {
-        String url = "http://localhost:5000/hello";
-        return restTemplate.getForObject(url, String.class);
-    }
 
     public String getGreetingMessage(String name) {
         URI targetUrl = UriComponentsBuilder.fromUriString("http://localhost:5000/greet")

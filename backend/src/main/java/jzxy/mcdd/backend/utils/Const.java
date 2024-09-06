@@ -70,5 +70,10 @@ public final class Const {
      * 表示普通用户角色的字符串标识符。
      */
     public final static String ROLE_NORMAL = "user";
+    /**
+     * Python SERVER URL
+     */
+    public final static String PYTHON_SERVER_BASE_URL = "http://localhost:5000/";
+
 
 }
